@@ -1,0 +1,82 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background:black;
+    color: white;
+}
+
+header{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin:35px auto;
+    text-align:center;
+    font-size:30px;
+    background: rgb(163, 8, 8);
+
+}
+
+.score{
+    font-size:20px;
+    font-family:Impact,
+    Haettenschweiler,
+    'Arial Narrow Bold',
+    sans-serif;
+    margin:55px auto;
+    text-align:center;
+    border:1px solid;
+    position:relative;
+    width:250px;
+    padding: 20px 20px;
+    border-radius:5px;
+
+}
+
+#player{
+    position:absolute;
+    top:0;
+    left:0;
+    padding:5px;
+}
+
+#computer {
+    position: absolute;
+    top:0;
+    right:0;
+    padding:5px;
+}
+
+.result{
+    text-align:center;
+    font-size:30px;
+    font-family:Impact,
+    Haettenschweiler,
+    'Arial Narrow Bold',
+    sans-serif;
+    font-weight:100;
+    color:rgb(163, 8, 8);
+}
+
+.choices {
+    text-align: center;
+}
+
+.choice{
+    display:inline-block;
+    padding:20px;
+    margin-top:25px;
+}
+
+.action-message{
+     text-align:center;
+     font-size:30px;
+     font-family:Impact,
+     Haettenschweiler,
+     'Arial Narrow Bold',
+     sans-serif;
+     font-weight:100;
+     margin-top:25px;
+}
+
