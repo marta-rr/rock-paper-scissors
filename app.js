@@ -71,8 +71,34 @@ function main() {
     scissors_div.addEventListener('click', function(){
         game('scissors');
     })
-  
-    var roundChoice = prompt('Do you want to play one round or best of three? Choose 1 or 3');
 }
 
 main();
+
+$(document).ready(function(){
+
+    showWindow()
+    function showWindow(){
+        $('#main').show();
+        //stop scroll
+        $('html body').css('overflow', 'hidden');
+        //  close after click
+        $('#close-btn').click(function(){
+            hideWindow();
+            // clearTimeout(stopAutoHide);
+        })
+            // stopAutoHide = setTimeout(hideWindow,9000000000000);
+    }
+
+    function hideWindow(){
+        $('#main').hide();
+        //on scroll
+        $('html body').css('overflow-y', 'visible');
+    }
+
+    // //  close after click
+    //  $('#close-btn').click(function(){
+    //     hideWindow();
+    //     // clearTimeout(stopAutoHide);
+    //  })
+})
