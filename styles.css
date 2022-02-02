@@ -8,9 +8,7 @@ html, body{
     background:black;
     color: white;
     max-width: 100%;
-    overflow-y: hidden;
     height: 100vh;
-    overflow-x: hidden;
 }
 
 header{
@@ -39,14 +37,14 @@ header{
 
 }
 
-#player{
+#computer {
     position:absolute;
     top:0;
     left:0;
     padding:5px;
 }
 
-#computer {
+#player {
     position: absolute;
     top:0;
     right:0;
@@ -75,7 +73,7 @@ header{
 .choice{
     display:inline-block;
     padding:30px;
-    margin: 30px 25px;
+    margin: 80px 25px;
     border:4px solid;
     border-radius:50%;
     transition: all 0.3s ease;
@@ -86,17 +84,6 @@ header{
     background:rgb(44, 43, 43);
 
 }
-
-/* .action-message{
-     text-align:center;
-     font-size:30px;
-     font-family:Impact,
-     Haettenschweiler,
-     'Arial Narrow Bold',
-     sans-serif;
-     font-weight:100;
-     margin-top:25px;
-} */
 
 .green-effect{
     border:3px solid rgb(43, 204, 43);
@@ -113,40 +100,24 @@ header{
     box-shadow: 0 0 15px rgb(107, 107, 105);
 }
 
-
-#main{
-    width:100%;
-    height:100vh;
+.reset{
+    margin: auto;
+    text-align:center;
+    margin-top:30px;
+    position:relative;
 }
 
-#pop-up{
- width:400px;
- height:300px;
- background:black;
- text-align:center;
- box-sizing:border-box;
- padding:20px;
- /* make it full page so user cannot interact with anything on the background */
- /* z-index: 1000;
- position: fixed;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%; */
-
- position:absolute;
- top:50%;
- left:50%;
- transform:translate(-50%, -50%);
+#reset{
+     font-size:20px;
+     font-family:Impact,
+     Haettenschweiler,
+     'Arial Narrow Bold',
+     sans-serif;
+     border:1px solid;
+     width:150px;
+     padding: 20px 20px;
+     border-radius:40px;
 }
 
 
-
-.modal {
-
-  /* make it full page so user cannot interact with anything on the background */
-
-    /* z-index: 1010; */
-
-}
 

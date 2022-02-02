@@ -15,13 +15,17 @@
     </header>
 
     <div class="score">
-        <div id="player">Player</div>
         <div id="computer">Computer</div>
-        <span id="player-score">0</span>:<span id="computer-score">0</span>
+        <div id="player">Player</div>
+        <span id="computer-score">0</span>:<span id="player-score">0</span>
     </div>
 
     <div class="result">
-        <p></p>
+        <p>Ready? Your move!</p>
+    </div>
+
+    <div class="reset">
+        <button id="reset" onclick="reStartGame()">Play Again</button>
     </div>
 
     <div class="choices">
@@ -30,18 +34,6 @@
         <div id="scissors" class="choice"><img src="images/scissors.png" alt=""></div>
     </div>
 
-    <div id="main">
-        <div id="pop-up" class="modal">
-        <button id="close-btn"></button>
-        <h1>Title</h1>
-        <p>text</p>
-        </div>
-
-    </div>
-
-    <!-- <div class="action-message">Your move!</div> -->
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="app.js" charsert="utf-8"></script>
 
 </body>

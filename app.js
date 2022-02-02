@@ -1,5 +1,7 @@
 let playerScore=0;
 let computerScore=0;
+let desiredRounds=0;
+let currentRound=1;
 const playerScore_span = document.getElementById('player-score');
 const computerScore_span = document.getElementById('computer-score');
 const score_div = document.querySelector('.score');
@@ -7,6 +9,7 @@ const result_p = document.querySelector('.result > p');
 const rock_div = document.getElementById('rock');
 const paper_div = document.getElementById('paper');
 const scissors_div = document.getElementById('scissors');
+const reset_button = document.getElementById('reset');
 
 function getComputerChoice (computerChoice){
     const choices = ['rock', 'paper', 'scissors'];
@@ -19,6 +22,7 @@ function win(userChoice, computerChoice){
     playerScore_span.innerHTML = playerScore;
     computerScore_span.innerHTML = computerScore;
     result_p.innerHTML = userChoice[0].toUpperCase() + userChoice.slice(1) + ' against ' + computerChoice + '. You win!';
+    console.log(`Round: ${currentRound}, Computer Score: ${computerScore}, Player Score: ${playerScore}. You win!!!`);
     document.getElementById(userChoice).classList.add('green-effect');
     setTimeout(function(){document.getElementById(userChoice).classList.remove('green-effect')}, 400);
 }
@@ -28,12 +32,14 @@ function lose(userChoice, computerChoice){
     playerScore_span.innerHTML = playerScore;
     computerScore_span.innerHTML = computerScore;
     result_p.innerHTML = userChoice[0].toUpperCase() + userChoice.slice(1) + ' against ' + computerChoice + '. You lost!';
+    console.log(`Round: ${currentRound},  Computer Score: ${computerScore},  Player Score: ${playerScore}. Computer wins!`);
     document.getElementById(userChoice).classList.add('red-effect');
     setTimeout(function(){document.getElementById(userChoice).classList.remove('red-effect')}, 400);
 }
 
 function draw(userChoice, computerChoice){
     result_p.innerHTML = userChoice[0].toUpperCase() + userChoice.slice(1) + ' against ' + computerChoice + '. It is a tie!';
+     console.log(`Round: ${currentRound},  Computer Score: ${computerScore},  Player Score: ${playerScore}. It is a tie!`);
     document.getElementById(userChoice).classList.add('gray-effect');
     setTimeout(function(){document.getElementById(userChoice).classList.remove('gray-effect')}, 400);
 }
@@ -59,46 +65,78 @@ function game (userChoice){
 }
 }
 
-function main() {
+function playGame(){
+    let roundChoice= 0;
+    while (roundChoice != 1 && roundChoice != 3) {
+        roundChoice = prompt('Welcome to Rock, Paper, Scissors!\nWould you like to play 1 round or best of 3?\nChoose 1 or 3!');
+        if (roundChoice != 1 && roundChoice != 3){
+            alert('You must confirm 1 or 3.  Try again, please.');
+        }
+    }
+    return roundChoice;
+}
+
+window.onload = function main() {
+    // Get user input
+    desiredRounds = playGame();
     rock_div.addEventListener('click', function(){
-        game('rock');
+        gameManager('rock');
     })
 
     paper_div.addEventListener('click', function(){
-        game('paper');
+        gameManager('paper');
     })
 
     scissors_div.addEventListener('click', function(){
-        game('scissors');
+        gameManager('scissors');
     })
 }
 
-main();
+function gameManager(userChoice){
 
-$(document).ready(function(){
-
-    showWindow()
-    function showWindow(){
-        $('#main').show();
-        //stop scroll
-        $('html body').css('overflow', 'hidden');
-        //  close after click
-        $('#close-btn').click(function(){
-            hideWindow();
-            // clearTimeout(stopAutoHide);
-        })
-            // stopAutoHide = setTimeout(hideWindow,9000000000000);
+    if(desiredRounds == 3 && (computerScore < 2 && playerScore < 2)){
+        game(userChoice);
+        currentRound++;
     }
 
-    function hideWindow(){
-        $('#main').hide();
-        //on scroll
-        $('html body').css('overflow-y', 'visible');
+    else if(desiredRounds == 1 && (playerScore < 1  && computerScore < 1)){
+        game(userChoice);
+        currentRound++;
     }
+    endGame();
+}
 
-    // //  close after click
-    //  $('#close-btn').click(function(){
-    //     hideWindow();
-    //     // clearTimeout(stopAutoHide);
-    //  })
-})
+function endGame(){
+    if(desiredRounds == 3 && computerScore == 2){
+            result_p.innerHTML =(`Computer Score: ${computerScore},  Player Score: ${playerScore}. Computer wins the game. Sorry!`);
+            console.log(`Computer Score: ${computerScore},  Player Score: ${playerScore}.\nComputer wins the game. Sorry!`);
+    }
+    else if(desiredRounds == 3 && playerScore == 2){
+            result_p.innerHTML = (`Computer Score: ${computerScore},  Player Score: ${playerScore}. You win the game!!! Congrats!!!`);
+            console.log(`Computer Score: ${computerScore},  Player Score: ${playerScore}.\nYou win the game!!! Congrats!!!`);
+    }
+    else if(desiredRounds == 1 && playerScore == 1){
+            result_p.innerHTML = (`Computer Score: ${computerScore},  Player Score: ${playerScore}. You win the game!!! Congrats!!!`);
+            console.log(`Computer Score: ${computerScore},  Player Score: ${playerScore}.\nYou win the game!!! Congrats!!!`);
+    }
+    else if(desiredRounds == 1 && computerScore == 1){
+            result_p.innerHTML = (`Computer Score: ${computerScore},  Player Score: ${playerScore}. Computer wins the game. Sorry!`);
+            console.log(`Computer Score: ${computerScore},  Player Score: ${playerScore}.\nComputer wins the game. Sorry!`);
+    }
+}
+
+
+function reStartGame(){
+  // reset to 0
+  playerScore = 0;
+  computerScore = 0;
+  currentRound= 1;
+
+  playerScore_span.innerHTML = playerScore;
+  computerScore_span.innerHTML = computerScore;
+
+  result_p.innerHTML = `Ready? Your move!`;
+
+  desiredRounds = playGame();
+}
+
